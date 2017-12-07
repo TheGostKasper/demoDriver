@@ -1,0 +1,59 @@
+﻿<ion-content class="padding">
+    <ion-refresher pulling-text="" on-refresh="doRefresh()"></ion-refresher>
+
+
+
+    <div ng-if="dStatus=='online'">
+        <div class="card no-request" ng-if="noRequest">
+            <div class="item item-text-wrap">
+                لا توجد طلبات جديدة
+            </div>
+            <button class="button button-block button-positive" ng-click="doRefresh()">تحديث</button>
+        </div>
+        <div class="list card" ng-repeat="order in ordersList track by $index">
+
+            <div class="item">
+                <p>{{order.merchantName}}</p>
+                <div class="price-label">{{order.grandTotal}} <span style="font-weight:300">جنيه</span></div>
+            </div>
+            <div class="item item-body">
+                <div>
+                    <h2 style="margin: 0;">طلب رقم - <b>{{order.orderNumber}}</b></h2>
+                     <p>اسم العميل - <b>{{order.customer.name}}</b></p> 
+                    <div style="color: #444;font-size: 12px;"><i class="ion-clock"></i> {{orderTime(order.creationDate)}}</div>
+                </div>
+                <br />
+                <p>
+                    <table class="product-details-table" ng-if="order.products!=null">
+                        <tr style="background: #f1f1f1;">
+                            <td>الاسم</td>
+                            <td>الكمية</td>
+                            <td>السعر</td>
+                        </tr>
+                        <tr class="list card" ng-repeat="product in order.products track by $index">
+                            <td>{{product.nameAR}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.quantity * product.price}}</td>
+                    </table>
+
+                    <p ng-show="order.products==null">
+                        <a ng-click="ShowProducts(order.id)"> عرض المنتجات</a>
+                    </p>
+                   
+                </p>
+                <div class="button-bar" style="margin-top:30px">
+                    <button class="button button-positive" style="margin-right:2px" ng-click="startOrder(order.id)" ng-if="order.state.toLowerCase()=='pending'">ابدأ</button>
+                    <button class="button button-dark" style="margin-right:2px" ng-click="continueOrder(order.id,order.state.toLowerCase())" ng-if="order.state.toLowerCase()!='pending'">استمرار</button>
+                    <!--<button class="button button-positive success" style="margin-right:2px" ng-click="acceptOrder(order.Id)">Accept</button>
+            <button class="button button-positive danger" ng-click="cancelOrder(order.Id)">Cancel</button>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div ng-if="dStatus=='offline'">
+        <div class="item item-text-wrap">
+            أنت الان خارج نطاق الخدمة , اضغط دخول حتي تبدأ استقبال الطلبات
+        </div>
+    </div>
+</ion-content>

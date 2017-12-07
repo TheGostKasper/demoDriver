@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html data-ng-cloak data-ng-app="driverApp" ng-strict-di>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Accept-encoding" content="gzip" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <link href="css/driver.css" rel="stylesheet" />
+    <link href="css/ionicons.min.css" rel="stylesheet" />
+</head>
+
+<body class="ionic-body platform-android">
+    <div class="content-wrapper">
+        <ion-pane>
+            <ion-nav-view>
+                <ion-side-menus enable-menu-with-back-views="false">
+                    <ion-side-menu-content>
+                        <ion-header-bar class="orange-bar h-115">
+                            <button class="button button-icon button-clear ion-navicon-round" side="right" menu-toggle="right" style="color: #fff;"></button>
+                            <div class="list">
+                                <a class="item item-avatar">
+                                    <!--<h2 >Welcome <b id="driver_name" style="text-transform:capitalize">Weelo</b></h2>-->
+                                </a>
+                            </div>
+                            <button class="button button-clear button-positive" style="color: #fff;" ng-click="changeStatus()">{{(dStatus=='offline')?'دخول':(dStatus=='online')?'خروج':''}}</button>
+                        </ion-header-bar>
+                        <ion-nav-view name="menuContent">
+                            <ion-content>
+                                <div class="content main-content">
+                                    <div ng-view="">
+                                    </div>
+                                </div>
+                            </ion-content>
+                        </ion-nav-view>
+                    </ion-side-menu-content>
+                    <ion-side-menu side="right">
+                        <ion-header-bar class="bar-dark h-115">
+                            <div style="width: 100%;padding: 30px;">
+                                <h3 class="text-center" style="font-weight:300;color:#f5f5f5;letter-spacing: -1px;"></h3>
+                            </div>
+                        </ion-header-bar>
+                        <ion-content>
+                            <ion-list>
+                                <ion-item menu-close href="#/">
+                                    <i class="icon ion-home"></i> الطلبات
+                                </ion-item>
+                                <ion-item menu-close href="#/profile">
+                                    <i class="icon ion-person"></i> الملف الشخصي
+                                </ion-item>
+                                <!--<ion-item menu-close href="#/login">
+                                    <i class="icon ion-android-list"></i> New Orders
+                                </ion-item>-->
+                                <!--<ion-item menu-close href="#/history">
+                                    <i class="icon ion-android-time"></i> Orders History
+                                </ion-item>
+                                <ion-item menu-close href="#/earning">
+                                    <i class="icon ion-cash"></i> Earnings
+                                </ion-item>-->
+                                <!--<ion-item menu-close href="#/settings">
+                                    <i class="icon ion-android-settings"></i> Settings
+                                </ion-item>-->
+                                <!--<ion-item menu-close href="/logout" target="_self">
+                                    <i class="icon ion-power"></i> Logout
+                                </ion-item>-->
+                            </ion-list>
+                        </ion-content>
+                    </ion-side-menu>
+                </ion-side-menus>
+            </ion-nav-view>
+        </ion-pane>
+    </div>
+    <audio id="driver_alert" controls="controls" loop="loop" style="display:none">
+        <source src="Audio/driver_order_alert.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!--Script-->
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+
+    <script src="scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="https://www.weelo.com.eg/api/signalr/hubs"></script>
+    <!--<script src="http://192.168.1.16:60/api/signalr/hubs"></script>-->
+
+
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+    <script src="scripts/angular-touch.min.js"></script>
+    <script src="scripts/angular-cookies.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-resource.min.js"></script>
+    <script src="scripts/angular-loader.min.js"></script>
+    <script src="scripts/angular-messages.min.js"></script>
+
+
+    <script src="scripts/ionic.min.js"></script>
+    <script src="scripts/ionic.bundle.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+
+    <!--<script src="cordova.js"></script>-->
+    <script src="scripts/lodash.min.js"></script>
+
+    <script src="scripts/index.js"></script>
+    <script src="scripts/progressbar.min.js"></script>
+
+    <script src="scripts/Driver/app.init.js"></script>
+    <script src="scripts/Driver/app.services.js"></script>
+    <script src="scripts/Driver/app.router.js"></script>
+    <script src="scripts/Driver/app.run.js"></script>
+    <script src="scripts/Driver/app.common.js"></script>
+
+    <script src="scripts/js.controllers/Dashboard.js"></script>
+    <script src="scripts/js.controllers/Profile.js"></script>
+    <script src="scripts/js.controllers/Map.js"></script>
+    <script src="scripts/js.controllers/OrderDetails.js"></script>
+    <script src="scripts/js.controllers/Orders.js"></script>
+    <script src="scripts/js.controllers/Settings.js"></script>
+    <script src="scripts/js.controllers/History.js"></script>
+    <script src="scripts/js.controllers/Earning.js"></script>
+    <script src="scripts/js.controllers/Login.js"></script>
+
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd5qyFxESXAGJcpvIOJfo-Uvtt_4zzwGI&libraries=places" type="text/javascript"></script>-->
+
+    <!--<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-67546029-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>-->
+
+
+</body>
+
+</html>

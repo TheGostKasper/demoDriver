@@ -1,0 +1,382 @@
+﻿body {
+    background-color: #F0F0F0;
+    color: #444;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    direction:rtl;
+    font-family: 'Cairo', sans-serif !important;
+}
+
+.orange-bar {
+    background-color: #122534;
+    opacity: 0.9 !important;
+    filter: alpha(opacity=90);
+}
+
+.h-115 {
+    height: 57px;
+}
+
+.search-input-brg {
+    border-radius: 10em;
+    padding: 0px 0 0px 9px;
+    background-color: #F7F7F7;
+    height: 27px;
+    margin: 5px 0px 0px 16px;
+    width: 100%;
+    border: 2px solid #ddd;
+}
+
+.content-wrapper .bar-header {
+    text-align: center;
+}
+
+.content-wrapper .bar-header .list {
+    margin: auto;
+}
+
+.content-wrapper .bar-header .item-avatar {
+    background: none;
+    border: none;
+}
+
+.content-wrapper .bar-header .item-avatar h2 {
+    color: #fff;
+}
+
+.content-wrapper .bar-header .item-avatar .ion-person {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 44px;
+    display: inline-block;
+    color: #ccc;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 7px 0px rgb(6, 45, 111);
+}
+
+.bar.bar-dark {
+    background-color: #2a3b49;
+    /*opacity: 0.9 !important;
+    filter: alpha(opacity=90);*/
+}
+
+.item-icon-left .icon {
+    color: #444;
+}
+
+.order-details .button {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.19px;
+}
+
+.order-details .item-header {
+    background: #F4F7ED;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.s-color {
+    color: #EF6004;
+}
+
+.l-s-t-ico {
+    font-size: 60px !important;
+}
+
+.has-header {
+    top: 57px;
+}
+
+.main-content {
+    padding: 15px;
+}
+
+.popup-head {
+    text-align: left;
+}
+
+.product-details-table {
+    width: 100%;
+}
+
+.product-details-table td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.danger {
+    background-color: #ef473a !important;
+}
+
+.success {
+    background-color: #28a54c !important;
+}
+
+.price-label {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    padding: 13px;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.bar-footer {
+    bottom: 22px;
+    z-index: 999;
+    padding: 0;
+    margin: 0px;
+    border: 0;
+}
+
+.main-content {
+    padding: 0px;
+    position: relative;
+    height: 100%;
+}
+
+.button.zdt {
+    line-height: 36px !important;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.scroll {
+    height: 100%;
+}
+
+#map-p {
+    width: 100%;
+    position: fixed;
+    right: 0;
+    left: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#map-loader {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
+
+div.not-bx {
+    background-color: rgba(42, 59, 73, 0.72);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.order-notifier {
+    display: table;
+    width: 100%;
+    height: 91%;
+}
+
+.not-bx-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    text-align: center;
+}
+
+#map-loader .progressbar-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 0px;
+    margin: 0px;
+    transform: translate(-50%, -50%);
+    color: #e5e5e5;
+    line-height: 1.3em;
+    font-size: 30px;
+}
+
+.show-direction-btn {
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px 6px #ccc;
+    border: 1px solid #dfdfdf;
+    position: relative;
+    z-index: 99;
+    right: 9px;
+    top: 5px;
+}
+
+.show-direction-btn a {
+    padding: 10px 15px;
+}
+
+.show-direction-btn a i {
+    font-size: 30px;
+    color: #6194EF;
+}
+
+.u-ico {
+    font-size: 24px;
+}
+
+.default {
+    background-color: #f5f5f5 !important;
+    color: #444 !important;
+}
+
+.listbtn {
+    position: relative !important;
+    top: 0px !important;
+    padding: 8px 15px;
+    right: 0px !important;
+    display: block !important;
+    font-size: 37px;
+}
+
+.listbtn.yes {
+    right: 0px !important;
+    color: #fff;
+    background: #28a54c;
+}
+
+.listbtn.yes.clicked {
+    right: 0px !important;
+    color: #28a54c;
+    background: #fff;
+}
+
+.listbtn.no {
+    right: 0px !important;
+    color: #fff;
+    background: #ef473a;
+}
+
+.listbtn.no.clicked {
+    right: 0px !important;
+    color: #ef473a;
+    background: #fff;
+}
+
+.product-details-table.list {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
+
+.product-list-info {
+    display: flex;
+    position: fixed;
+    bottom: 45px;
+    z-index: 999;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #fafafa;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    padding: 5px 20px;
+}
+
+.relative {
+    position: relative;
+}
+
+.list-bottom-actions {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0;
+    background-color: #f5f5f5;
+    padding: 0;
+    border-top: 1px solid #dfdfdf;
+}
+
+.list-bottom-actions .button.button-clear {
+    text-align: left;
+    text-indent: 5px;
+}
+
+.list-bottom-actions .button.activated {
+    border: 1px solid transparent;
+}
+
+.product-qty,
+.product-price,
+.product-tot {
+    text-indent: 7px;
+    display: inline-block;
+    font-weight: 700;
+}
+
+.product-details-table.list a.item {
+    padding-bottom: 50px;
+}
+
+.product-details-table.list a.item.activated {
+    background-color: #fff ;
+}
+
+
+.inner-list a.item.activated{
+    background-color: #fff ;
+}
+.product-details-table.list a.item h2,
+.product-details-table.list a.item p {
+    white-space: normal !important;
+}
+
+.platform-android .action-sheet .action-sheet-title,
+.platform-android .action-sheet .button {
+    text-align: center;
+}
+
+.inner-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.bar .button-bar>.button,
+.bar .buttons>.button {
+    font-size: 16px;
+    line-height: 42px;
+}
+
+
+.budgettxt{
+    text-align: center;
+    font-size: 30px !important;
+    padding: 30px 10px !important;;
+    
+}
+bar-chart, svg
+{
+    margin-bottom:0px;
+}

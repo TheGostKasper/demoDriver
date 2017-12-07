@@ -1,0 +1,16 @@
+<ion-content>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title"></h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">الغاء</button>
+    </ion-header-bar>
+    <ion-view class="padding">
+
+        <div class="bgdlist">
+            <span class="input-label lblbdg">الرجاء ادخال الميزانية اليومية</span>
+            <label class="item item-input">
+              <input ng-model="budget" type="tel" class="budgettxt" placeholder="0">
+            </label>
+            <button class="button button-full button-positive " ng-click="updateBudget(budget)">استقبال الطلبات</button>
+        </div>
+    </ion-view>
+</ion-content>

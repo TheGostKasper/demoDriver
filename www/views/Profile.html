@@ -1,0 +1,35 @@
+﻿<ul class="list">
+    <li class="item">
+        <h2>الاسم </h2>
+        <p>{{userInfo.firstName}}</p>
+    </li>
+    <li class="item">
+        <h2>اللقب</h2>
+        <p>{{userInfo.lastName}}</p>
+    </li>
+    <li class="item">
+        <h2>البريد الالكتروني</h2>
+        <p>{{userInfo.email}}</p>
+    </li>
+    <li class="item">
+        <h2>رقم الهاتف</h2>
+        <p>{{userInfo.mobile}}</p>
+    </li>
+    <li class="item">
+        <h2>البلد</h2>
+        <p>{{userInfo.country}}</p>
+    </li>
+    <li class="item">
+        <h2>المدينة</h2>
+        <p>{{userInfo.city}}</p>
+    </li>
+    <li class="item">
+        <h2>الحالة</h2>
+        <p>{{userInfo.status=='Online' ? 'متاح' : userInfo.status=='Offline' ?'غير متاح':userInfo.status==3 ?'Deleted':userInfo.status==4?'Blocked':''}}</p>
+    </li>
+    <li class="item">
+        <h2>تاريخ الاشتراك</h2>
+        <p>{{userInfo.creationDate | date:"MM/dd/yyyy"}}</p>
+    </li>
+
+</ul>

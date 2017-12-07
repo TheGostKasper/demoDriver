@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+
+.bgdlist {
+    margin-top: 25%;
+}
+
+.lblbdg {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    max-width: none;
+    padding: 20px;
+}

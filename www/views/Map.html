@@ -1,0 +1,131 @@
+﻿
+<div>
+    <div class="" ng-show="isDelivered" ng-init="isDelivered=false">
+    <div style="padding:20px">
+       <p> شكرا ! لقد قمت بايصال الطلب بنجاح</p>
+    </div>
+    <a ng-href="#/orders" class="button button-block button-positive">طلبات جديدة</a>
+</div>
+    <div ng-show="showMapAlert" ng-init="showMapAlert=false">
+        <div class="order-notifier">
+            <div class="not-bx-cell">
+                <div id="map-loader">
+                    <p class="progressbar-text"></p>
+                </div>
+                <div class="list card" ng-repeat="order in ordersList track by $index" style="direction:rtl;text-align:right">
+                    <div class="item">
+                        <b>{{order.merchantName}}</b>
+
+                        <div class="price-label">{{order.grandTotal}} <span style="font-weight:300">جنيه</span></div>
+                    </div>
+                    <div class="item item-body">
+                        <div>
+                            <h2>طلب جديد - <b>{{order.orderNumber}}</b></h2>
+                        </div>
+                        <br />
+                        <p>
+                            <table class="product-details-table">
+                                <tr style="background: #f1f1f1;">
+                                    <td>الاسم</td>
+                                    <td>الكمية</td>
+                                    <td>السعر</td>
+                                </tr>
+                                <tr class="list card" ng-repeat="product in order.products track by $index">
+                                    <td>{{product.nameAR}}</td>
+                                    <td>{{product.quantity}}</td>
+                                    <td>{{product.quantity * product.price}}</td>
+                            </table>
+                        </p>
+                        <!--<div class="button-bar" style="margin-top:30px">
+                            <button class="button button-positive success" style="margin-right:2px" ng-click="acceptOrder(order.Id)">Accept</button>
+                            <button class="button button-positive danger" ng-click="cancelOrder(order.Id)">Cancel</button>
+                        </div>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="show-direction-btn" ng-if="isAccepted">
+        <a href="{{orderNavigation}}" class="button-bar bar-light">
+            <i class="ion-android-navigate"></i>
+        </a>
+    </div>
+    <div ng-show="!showMapAlert">
+        <!--<div id="map" data-tap-disabled="true"></div>-->
+        <div class="list card" ng-repeat="order in ordersList track by $index">
+            <div class="item">
+                <b>{{order.merchantName}}</b>
+
+                <div class="price-label">{{order.grandTotal}} <span style="font-weight:300">جنيه</span></div>
+            </div>
+            <div class="item item-body" style="padding:0">
+                <div style="background:#f5f5f5;padding:10px">
+                    <h2>طلب جديد - <b>{{order.orderNumber}}</b></h2>
+                    <h2>اسم العميل - <b>{{order.customer.name}}</b></h2>
+                    <h2>المبني - <b>{{order.customer.apt.split('/')[0]}}</b></h2>
+                    <h2>الشقة- <b>{{order.customer.apt.split('/')[1]}}</b></h2>
+                </div>
+                <hr />
+                <p>
+                    <table class="product-details-table" ng-show="!isTempList">
+                        <tr style="background: #f1f1f1;">
+                            <td>الاسم</td>
+                            <td>الكمية</td>
+                            <td>السعر</td>
+                        </tr>
+                        <tr class="list card" ng-repeat="product in order.products track by $index">
+                            <td>{{product.nameAR}}</td>
+                            <td>{{product.quantity}}</td>
+                            <td>{{product.quantity * product.price}}</td>
+                    </table>
+                </p>
+                <div class="list" ng-show="isTempList">
+                    <div class="inner-list">
+                        <a class="item item-thumbnail-left" ng-repeat="product in ordersList[0].products track by $index">
+                            <img ng-src="{{product.imageUrl}}">
+                            <h2>{{product.nameAR}}</h2>
+                            <p>500 g</p>
+                            <p>
+                                <span>الكمية:<span class="product-qty">{{product.quantity}}</span></span> <span>X</span>
+                                <span><span class="product-price">{{product.price}}</span></span> <span>=</span>
+                                <span><span class="product-tot">{{product.quantity * product.price}}</span> جنيه</span>
+                            </p>
+                            <div class="row list-bottom-actions" style="margin:0px;position:relative;">
+                                <button class="col button button-balanced icon-left ion-checkmark yes" ng-class="{disabled:(product.state=='Available')}" ng-click="productAction('yes',2,ordersList[0].id,product.id,product.orderItemId)" data-orderid="{{ordersList[0].id}}"
+                                    data-productid="{{product.orderItemId}}">
+                       موجود
+                   </button>
+                                <button class="col button button-assertive icon-left ion-close no" ng-class="{disabled:(product.state=='NotAvailable')}" ng-click="productAction('no',3,ordersList[0].id,product.id,product.orderItemId)" data-orderid="{{ordersList[0].id}}"
+                                    data-productid="{{product.orderItemId}}">
+                       غير موجود
+                   </button>
+                                <!--<button class="col button button-small button-clear button-positive icon-left ion-loop change" ng-click="productAction('change',0,ordersList[0].id,product.id,product.orderItemId)" data-orderid="{{ordersList[0].id}}" data-productid="{{product.orderItemId}}">
+                       Change
+                   </button>-->
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item" ng-if="isPicking&&!isReady" ng-init="isPicking=false">
+        <span>الاجمالي</span>
+        <span class="price-label relative">{{ordersList[0].grandTotal}} <span style="font-weight:300">جنيه</span></span>
+    </div>
+
+    <div class="bar1"  ng-show="showMapAlertbtns" ng-init="showMapAlertbtns=false">
+        <div class="button-bar bar-light" ng-show="!isAccepted" ng-init="isAccepted=false">
+            <a class="button button-balanced" ng-click="acceptOrder()">قبول</a>
+            <a class="button button-assertive" ng-click="cancelOrder()">الغاء</a>
+        </div>
+        <div class="button-bar" ng-show="isAccepted">
+            <a class="button button-positive" ng-click="pickingOrder()" ng-if="!isPicking" ng-init="isPicked=false">داخل السوبرماركت </a>
+            <a class="button button-positive" ng-click="readyOrder()" ng-if="isAccepted&&isPicking&&!isReady" ng-init="isReady=false">تم تحضير الطلب </a>
+            <a class="button button-positive" ng-click="dropOffOrder()" ng-if="isAccepted&&isReady">تم توصيل الطلب</a>
+            <a class="button button-stable" ng-click="showMenu()"><i class="ion-ios-more u-ico"></i></a>
+        </div>
+    </div>
+
+</div>

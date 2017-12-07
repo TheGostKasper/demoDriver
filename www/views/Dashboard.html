@@ -1,0 +1,40 @@
+﻿<!--<ion-refresher pulling-text="" on-refresh="doRefresh()"></ion-refresher>-->
+<div class="card no-request" ng-show="noRequest" ng-init="noRequest=true">
+    <div class="item item-text-wrap">
+       لا توجد طلبات جديدة
+    </div>
+</div>
+
+<div class="list card" ng-repeat="order in ordersList track by $index">
+
+    <div class="item">
+        <b>{{order.merchantName}}</b>
+
+        <div class="price-label">{{order.total}} <span style="font-weight:300">جنيه</span></div>
+    </div>
+    <div class="item item-body">
+        <div>
+            <h2>طلب جديد- <b>{{order.orderNumber}}</b></h2>
+        </div>
+        <br />
+        
+        <p>
+            <table class="product-details-table">
+                <tr style="background: #f1f1f1;">
+                    <td>الاسم</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                </tr>
+                <tr class="list card" ng-repeat="product in order.products track by $index">
+                    <td>{{product.nameAR}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>{{product.quantity * product.price}}</td>
+            </table>
+        </p>
+        <div class="button-bar" style="margin-top:30px">
+            <button class="button button-positive success" style="margin-right:2px" ng-click="acceptOrder(order.Id)">قبول</button>
+            <button class="button button-positive danger" ng-click="cancelOrder(order.Id)">الغاء</button>
+        </div>
+    </div>
+
+</div>

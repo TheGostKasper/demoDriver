@@ -1,0 +1,62 @@
+﻿<ul class="list">
+    <li class="item item-icon-left">
+        <h2> Order Id</h2>
+        <p>{{order.Id}}</p>
+        <span class="item-note">
+            Order by: {{order.OrderDriverInfo.Name}}
+        </span>
+    </li>
+    <li class="item">
+        <h2>Create Date</h2>
+        <p>{{order.CreateDate | date:"MM/dd/yyyy"}}</p>
+    </li>
+    <li class="item">
+        <h2>Pickup Location</h2>
+        <p>{{order.StartAddress.Name}}</p>
+    </li>
+    <li class="item">
+        <h2>Toatal Fare</h2>
+        <p>{{order.TotalFare}}</p>
+    </li>
+    <li class="item">
+        <h2>Tip</h2>
+        <p>{{order.DriverAssistanceType.Type}}</p>
+    </li>
+    <li class="item item-divider">Driver Help</li>
+    <li class="item">
+        <p>{{order.Tip}}</p>
+    </li>
+    <li class="item">
+        <h2>Notes</h2>
+        <p>{{order.Notes}}</p>
+    </li>
+    <li class="item item-divider">Pickup Items</li>
+    <li ng-repeat="item in order.Items">
+        <div class="item item-icon-left">
+            <i class="icon ion-ios-filing"></i>
+            <span>{{item.Name}}</span>
+        </div>
+    </li>
+
+</ul>
+<div class="order-details">
+    <div class="list">
+        <div class="item item-icon-left">
+            <i class="icon ion-ios-box"></i>
+            Order Id: {{order.Number}}
+            <span class="item-note">
+                Order by: {{order.User.Name}}
+            </span>
+        </div>
+        <div class="item item-divider">Location</div>
+        <div class="item item-icon-left">
+            <i class="icon ion-ios-location"></i>
+            Pickup Location
+            <p>{{order.StartAddress.Name}}</p>
+        </div>
+        
+        <div class="item">
+            <button class="button button-block icon-left ion-ios-checkmark-outline button-positive">Accept</button>
+        </div>
+    </div>
+</div>

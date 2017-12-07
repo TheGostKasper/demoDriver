@@ -1,0 +1,33 @@
+﻿<ion-content class="padding">
+    <ion-refresher pulling-text="" on-refresh="doRefresh()"></ion-refresher>
+
+
+    <div class="card no-request" ng-show="noRequest" ng-init="noRequest=false">
+        <div class="item item-text-wrap">
+            You have no orders completed yet,
+        </div>
+    </div>
+    <div class="list card" ng-repeat="order in ordersHistoryList track by $index">
+
+        <div class="item item-avatar">
+            <img src="{{order.OrderDriverInfo.ImageUrl}}">
+            <h2>{{order.OrderDriverInfo.Name}}</h2>
+            <p>{{order.CreateDate | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+        </div>
+
+        <div class="item item-body">
+            <img class="full-image" src="{{order.OrderPathImage}}">
+            <p>
+                This route will start from start from <b>{{order.StartAddress.Name}}</b> and will finsh at <b>{{order.EndAddress.Name}}</b>
+            </p>
+            <p>
+                <div class="button-bar">
+                    <button class="button button-positive" style="margin-right:2px" ng-click="acceptOrder(order.Id)">Accept</button>
+                    <button class="button button-light" ng-click="cancelOrder(order.Id)">Cancel</button>
+                </div>
+
+            </p>
+        </div>
+
+    </div>
+</ion-content>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html ng-app="starter">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/platformOverrides.js"></script>
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-controller="DriverLoginController">
+    <ion-pane>
+        <ion-content>
+            <div class="list list-inset">
+                <label class="item item-input">
+              <input type="text" placeholder="البريد الاليكتروني" ng-model="data.username">
+          </label>
+                <label class="item item-input">
+              <input type="password" placeholder="الرقم السري" ng-model="data.password">
+          </label>
+            </div>
+            <button class="button button-block button-calm" ng-click="login(data)">دخول</button>
+        </ion-content>
+    </ion-pane>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+
+    <script>
+        (function(angular) {
+            'use strict';
+            angular.module('starter').controller('DriverLoginController', ["$scope", "$http", "$ionicLoading", "$ionicPopup", "$window",
+                function($scope, $http, $ionicLoading, $ionicPopup, $window) {
+
+                    $scope.data = {
+                        // username: 'john@gmail.com',
+                        // password: '123456'
+                    }
+                    if ($window.localStorage.getItem('shopperToken')) window.location.href = 'index.html#/';
+
+                    $scope.login = function(model) {
+                        $ionicLoading.show({
+                            template: '<ion-spinner icon="android"></ion-spinner>'
+                        });
+                        getToken(model).then(function(response) {
+                            // debugger;
+                            if (response)
+                                $window.localStorage.setItem('shopperToken', response.data.access_token);
+
+                            model.email = model.username;
+                            var headers = {
+                                'Authorization': 'Bearer ' + $window.localStorage.getItem('shopperToken')
+                            }
+                            callHttp('shopper/Login', 'POST', model, headers)
+                                .then(function(response) {
+                                    $ionicLoading.hide();
+                                    if (response.data.errorCode != 200) {
+                                        $scope.showAlert();
+                                    } else {
+                                        $window.localStorage.setItem('driver', JSON.stringify(response.data.data));
+                                        $window.location.href = 'index.html#/';
+                                    }
+                                }).catch(function(e) {
+                                    $ionicLoading.hide();
+                                    $scope.showAlert();
+                                })
+                        }, function(e) {
+                            $ionicLoading.hide();
+                            $scope.showAlert();
+                        });
+
+                    }
+
+                    function callHttp(url, method, data, headers) {
+                        var req = {
+                            method: method,
+                            url: 'https://www.weelo.com.eg/api/' + url,
+                            // url: 'http://192.168.1.16:60/api/' + url,
+                            headers: headers,
+                            data: data
+                        }
+                        return $http(req);
+                    }
+
+                    function getToken(model) {
+                        var _body = "username=" + model.username + "&password=" + model.password + "&grant_type=password"
+                        var req = {
+                            method: 'POST',
+                            url: 'https://www.weelo.com.eg/api/token',
+                            // url: 'http://192.168.1.16:60/api/token',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'Accept': 'application/json'
+                            },
+                            data: _body.toString()
+                        }
+                        return $http(req);
+                    }
+
+                    $scope.showAlert = function() {
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Oops...',
+                            template: 'Email or password is uncorrect ! '
+                        });
+                    };
+                }
+            ]);
+        })(angular);
+    </script>
+</body>
+
+</html>
